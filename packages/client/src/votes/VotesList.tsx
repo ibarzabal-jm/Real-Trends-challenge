@@ -1,5 +1,5 @@
 import React from "react";
-import {Heading, Stack, Text} from "@chakra-ui/layout";
+import {Stack, Text} from "@chakra-ui/layout";
 
 import {Vote} from "./types";
 
@@ -9,14 +9,15 @@ interface Props {
 
 const VotesList: React.FC<Props> = ({votes}) => {
   return (
-    <Stack spacing={3}>
-      <Text>{votes.length}</Text>
+    <Stack spacing={1}>
+      <Text fontWeight="bold">{votes.length} votes</Text>
       <Stack
+        bg="white"
         border="2px solid"
-        borderRadius={8}
         height="200px"
         overflowY="auto"
         paddingX={4}
+        rounded={8}
         spacing={0.5}
       >
         {votes.map((vote, index) => (
