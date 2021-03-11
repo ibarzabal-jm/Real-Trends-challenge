@@ -15,13 +15,15 @@ const VotesList: React.FC<Props> = ({votes}) => {
         bg="white"
         border="2px solid"
         height="200px"
+        overflowX="auto"
         overflowY="auto"
         paddingX={4}
         rounded={8}
         spacing={0.5}
+        w={256}
       >
         {votes.map((vote, index) => (
-          <Stack key={index} isInline>
+          <Stack key={index} isInline align="center">
             <Text color="#71D8BF">{vote.user}</Text>
             <Text>{vote.review || "-"}</Text>
           </Stack>

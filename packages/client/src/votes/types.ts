@@ -1,7 +1,7 @@
-import {Product} from "~/product/types";
+import {Pokemon} from "~/pokemons/types";
 
 export interface Vote {
   user: string;
-  product: Product["key"];
+  pokemon: Pokemon["id"];
   review?: string;
 }
