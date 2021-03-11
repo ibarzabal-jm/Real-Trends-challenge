@@ -2,16 +2,22 @@ import React from "react";
 
 import ServerContext, {Context} from "~/context/ServerContext";
 
-export function useInformation(): [Context["state"]["products"], Context["state"]["votes"]] {
+export function useInformation(): [Context["state"]["pokemons"], Context["state"]["votes"]] {
   const {
-    state: {products, votes},
+    state: {pokemons, votes},
   } = React.useContext(ServerContext);
 
-  return [products, votes];
+  return [pokemons, votes];
 }
 
 export function useSocket(): Context["socket"] {
   const {socket} = React.useContext(ServerContext);
 
   return socket;
+}
+
+export function useResetVotes(): Context["resetVotes"] {
+  const {resetVotes} = React.useContext(ServerContext);
+
+  return resetVotes;
 }

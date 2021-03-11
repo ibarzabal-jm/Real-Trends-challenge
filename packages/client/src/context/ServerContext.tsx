@@ -2,24 +2,25 @@ import React from "react";
 import SocketIO from "socket.io-client";
 
 import Loading from "~/app/screens/Loading";
-import {Product} from "~/product/types";
+import {Pokemon} from "~/pokemons/types";
 import {Vote} from "~/votes/types";
 
 interface State {
-  products: Product[];
+  pokemons: Pokemon[];
   votes: Vote[];
 }
 
 export interface Context {
   state: State;
   socket: SocketIO.Socket;
+  resetVotes: () => void;
 }
 
 const ServerContext = React.createContext({} as Context);
 const socket = SocketIO.io("http://localhost:5000");
 
 const ServerProvider: React.FC = ({children}) => {
-  const [state, setState] = React.useState<State>({products: [], votes: []});
+  const [state, setState] = React.useState<State>({pokemons: [], votes: []});
   const [online, setOnline] = React.useState<true | false>(false);
   const [show, setShow] = React.useState<true | false>(false);
 
@@ -36,7 +37,13 @@ const ServerProvider: React.FC = ({children}) => {
     return <Loading online={online} />;
   }
 
-  return <ServerContext.Provider value={{socket, state}}>{children}</ServerContext.Provider>;
+  const resetVotes = () => {
+    socket.emit("reset-votes");
+  };
+
+  return (
+    <ServerContext.Provider value={{socket, state, resetVotes}}>{children}</ServerContext.Provider>
+  );
 };
 
 export {ServerContext as default, ServerProvider as Provider};
