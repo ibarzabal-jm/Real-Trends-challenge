@@ -1,26 +1,19 @@
-import * as React from "react";
-import SocketIO from "socket.io-client";
+import React from "react";
+import {Stack} from "@chakra-ui/layout";
+import {Image} from "@chakra-ui/image";
 
 import logo from "~/assets/logo.svg";
-
-import styles from "./Home.module.scss";
-
-const socket = SocketIO.io("http://localhost:5000");
+import {useInformation} from "~/hooks/useServerContext";
+import ProductList from "~/product/ProductList";
 
 const Home: React.FC = () => {
-  React.useEffect(() => {
-    socket.on("ping", (message: string) => console.log(message));
-  }, []);
+  const [products, votes] = useInformation();
 
   return (
-    <main className={styles.container}>
-      <header className={styles.header}>
-        <h1>
-          <img alt="RealTrends" src={logo} width={180} />
-        </h1>
-        <h3>Lets get this party started</h3>
-      </header>
-    </main>
+    <Stack align="center">
+      <Image src={logo} width={180} />
+      <ProductList products={products} votes={votes} />
+    </Stack>
   );
 };
 
