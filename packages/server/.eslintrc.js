@@ -28,6 +28,7 @@ module.exports = {
         "semi": true,
         "singleQuote": false,
         "bracketSpacing": false,
+        "endOfLine":"auto",
         "arrowParens": "always"
       }
     ],
