@@ -5,7 +5,7 @@ import {Button} from "@chakra-ui/button";
 
 import logo from "~/assets/logo.svg";
 import {useInformation, useResetVotes} from "~/hooks/useServerContext";
-import PokemonList from "~/pokemons/PokemonsList";
+import PokemonList from "~/app/pokemons/PokemonsList";
 
 const Home: React.FC = () => {
   const [pokemons, votes] = useInformation();

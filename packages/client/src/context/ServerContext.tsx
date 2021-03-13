@@ -2,8 +2,8 @@ import React from "react";
 import SocketIO from "socket.io-client";
 
 import Loading from "~/app/screens/Loading";
-import {Pokemon} from "~/pokemons/types";
-import {Vote} from "~/votes/types";
+import {Pokemon} from "~/app/pokemons/types";
+import {Vote} from "~/app/votes/types";
 
 interface State {
   pokemons: Pokemon[];

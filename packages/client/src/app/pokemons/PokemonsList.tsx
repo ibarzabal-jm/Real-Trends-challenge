@@ -2,8 +2,8 @@ import React from "react";
 import {Image} from "@chakra-ui/image";
 import {Heading, Stack, Text} from "@chakra-ui/layout";
 
-import {Vote} from "~/votes/types";
-import VotesList from "~/votes/VotesList";
+import {Vote} from "~/app/votes/types";
+import VotesList from "~/app/votes/VotesList";
 
 import {Pokemon} from "./types";
 
