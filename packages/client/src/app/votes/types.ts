@@ -1,4 +1,4 @@
-import {Pokemon} from "~/app/pokemons/types";
+import {Pokemon} from "~/app/pokemon/types";
 
 export interface Vote {
   user: string;

@@ -2,7 +2,7 @@ import React from "react";
 import SocketIO from "socket.io-client";
 
 import Loading from "~/app/screens/Loading";
-import {Pokemon} from "~/app/pokemons/types";
+import {Pokemon} from "~/app/pokemon/types";
 import {Vote} from "~/app/votes/types";
 
 interface State {
@@ -12,7 +12,6 @@ interface State {
 
 export interface Context {
   state: State;
-  socket: SocketIO.Socket;
   resetVotes: () => void;
 }
 
@@ -41,9 +40,7 @@ const ServerProvider: React.FC = ({children}) => {
     socket.emit("reset-votes");
   };
 
-  return (
-    <ServerContext.Provider value={{socket, state, resetVotes}}>{children}</ServerContext.Provider>
-  );
+  return <ServerContext.Provider value={{state, resetVotes}}>{children}</ServerContext.Provider>;
 };
 
 export {ServerContext as default, ServerProvider as Provider};

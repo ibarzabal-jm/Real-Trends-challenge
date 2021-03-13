@@ -20,14 +20,16 @@ const VotesList: React.FC<Props> = ({votes}) => {
         paddingX={4}
         rounded={8}
         spacing={0.5}
-        w={256}
       >
-        {votes.map((vote, index) => (
-          <Stack key={index} isInline align="center">
-            <Text color="#71D8BF">{vote.user}</Text>
-            <Text>{vote.review || "-"}</Text>
-          </Stack>
-        ))}
+        {votes
+          .slice(0)
+          .reverse()
+          .map((vote, index) => (
+            <Stack key={index} isInline>
+              <Text color="#71D8BF">{vote.user}</Text>
+              <Text textAlign="left">{vote.review}</Text>
+            </Stack>
+          ))}
       </Stack>
     </Stack>
   );

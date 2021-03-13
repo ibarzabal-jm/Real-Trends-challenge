@@ -10,12 +10,6 @@ export function useInformation(): [Context["state"]["pokemons"], Context["state"
   return [pokemons, votes];
 }
 
-export function useSocket(): Context["socket"] {
-  const {socket} = React.useContext(ServerContext);
-
-  return socket;
-}
-
 export function useResetVotes(): Context["resetVotes"] {
   const {resetVotes} = React.useContext(ServerContext);
 

@@ -5,7 +5,9 @@ import {Button} from "@chakra-ui/button";
 
 import logo from "~/assets/logo.svg";
 import {useInformation, useResetVotes} from "~/hooks/useServerContext";
-import PokemonList from "~/app/pokemons/PokemonsList";
+import VotesList from "~/app/votes/VotesList";
+import PokemonCard from "~/app/pokemon/PokemonCard";
+import VoteBar from "~/app/votes/VoteBar";
 
 const Home: React.FC = () => {
   const [pokemons, votes] = useInformation();
@@ -14,7 +16,22 @@ const Home: React.FC = () => {
   return (
     <Stack align="center">
       <Image src={logo} width={180} />
-      <PokemonList pokemons={pokemons} votes={votes} />
+
+      {pokemons.map((pokemon) => {
+        const pokemonVotes = votes.filter((votes) => votes.pokemon === pokemon.id);
+        const percentage = (pokemonVotes.length * 100) / votes.length;
+
+        return (
+          <Stack key={pokemon.id}>
+            <Stack isInline>
+              <PokemonCard pokemon={pokemon} />
+              <VoteBar percentage={percentage} />
+            </Stack>
+            <VotesList votes={pokemonVotes} />
+          </Stack>
+        );
+      })}
+
       <Button colorScheme="teal" onClick={resetVotes}>
         Reset Votation
       </Button>

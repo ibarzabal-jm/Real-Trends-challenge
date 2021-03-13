@@ -7,11 +7,12 @@ import {Provider as ServerProvider} from "~/context/ServerContext";
 import Home from "./app/screens/Home/Home";
 
 import "./theme.css";
+import theme from "./theme";
 
 ReactDOM.render(
   <React.StrictMode>
     <ServerProvider>
-      <ChakraProvider resetCSS>
+      <ChakraProvider resetCSS theme={theme}>
         <Home />
       </ChakraProvider>
     </ServerProvider>
